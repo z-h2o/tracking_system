@@ -13,7 +13,8 @@ from app.api import apps, tracking
 app = FastAPI(
     title=settings.APP_TITLE,
     version=settings.APP_VERSION,
-    debug=settings.DEBUG
+    port=settings.PORT,
+    host=settings.HOST
 )
 
 # 配置CORS
@@ -41,6 +42,9 @@ async def root():
 async def health_check():
     return {"status": "healthy"}
 
+
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="127.0.0.1", port=8000, reload=True)
+    print(f"服务将在 {settings.HOST}:{settings.PORT} 启动，环境: {settings.ENV}")
+    # 使用导入字符串格式以支持reload功能
+    uvicorn.run("app.main:app", host=settings.HOST, port=settings.PORT, reload=settings.RELOAD)

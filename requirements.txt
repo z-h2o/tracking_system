@@ -1,3 +1,9 @@
+# 阿里云镜像
+# --index-url https://mirrors.aliyun.com/pypi/simple/
+# 清华镜像
+--index-url https://pypi.tuna.tsinghua.edu.cn/simple/
+--trusted-host mirrors.aliyun.com
+
 fastapi==0.109.0
 uvicorn==0.27.0
 pydantic==2.5.0
